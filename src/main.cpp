@@ -3,8 +3,11 @@
 #include <QQmlContext>
 #include <QFontDatabase>
 
+#include <src/models/videoListModel.h>
+
 int main(int argc, char *argv[]) {
   QGuiApplication app(argc, argv);
+  qmlRegisterType<VideoListModel>("an.qt.CModel", 1, 0, "VideoListModel");
 
   // 设置全局字体，用于解决Qt for WebAssembly中文显示异常问题
   // fileName 参数不用带qrc:前缀

@@ -12,19 +12,21 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 COMPONENTS Core Gui Quick REQUIRED)
+find_package(Qt6 COMPONENTS Core Gui Quick QuickControls2 REQUIRED)
 
 set(PROJECT_SOURCES
         src/main.cpp
         src/md5.cc src/md5.h
-        src/wasm/wasm.h)
+        src/wasm/wasm.h
+        src/models/videoListModel.cc
+        src/services/store/store.cc)
 
 qt_add_executable(dream-web
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES})
 
 target_link_libraries(dream-web
-        PRIVATE Qt6::Core Qt6::Gui Qt6::Quick)
+        PRIVATE Qt6::Core Qt6::Gui Qt6::Quick Qt6::QuickControls2)
 
 # 当编译WebAssembly时修改链接参数，否则会报初始内存太小错误
 if(EMSCRIPTEN)
@@ -38,6 +40,6 @@ qt_add_qml_module(dream-web
         URI qtwasm
         VERSION 1.0
         QML_FILES
-        qrc/Main.qml qrc/App.qml
+        qrc/Main.qml qrc/App.qml qrc/ArticleList.qml
         RESOURCES
         assets/fonts/WenQuanYi/wqy-microhei-lite.ttc)

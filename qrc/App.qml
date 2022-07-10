@@ -5,6 +5,7 @@ import QtQuick.Layouts
 ColumnLayout {
     Layout.fillHeight: true
     Layout.fillWidth: true
+    spacing: 8
 
     Rectangle {
 
@@ -57,19 +58,30 @@ ColumnLayout {
         }
     }
 
-    RowLayout {
-        Layout.preferredHeight: 80
-        TextEdit {
-            text: "Please Input 请输入内容"
-            selectByMouse: true
-            font.pointSize: 20
+    Rectangle {
+        Layout.preferredWidth: parent.width
+        Layout.fillHeight: true
+        radius: 4
+
+        Rectangle {
+            anchors.top: parent.top
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.bottom: parent.bottom
+            width: 960
+            color: "#ffffff"
+            ArticleList {
+                anchors.top: parent.top
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.bottom: parent.bottom
+            }
         }
     }
 }
 
 /*##^##
 Designer {
-    D{i:0;autoSize:true;formeditorZoom:0.75;height:480;width:640}D{i:2}D{i:1}D{i:4}D{i:3}
+    D{i:0;autoSize:true;formeditorZoom:0.5;height:960;width:1400}
 }
 ##^##*/
 

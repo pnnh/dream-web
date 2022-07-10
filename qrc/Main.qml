@@ -13,5 +13,12 @@ Window {
 
     App {
         width: parent.width
+        height: parent.height
     }
 }
+
+/*##^##
+Designer {
+    D{i:0;formeditorZoom:0.5;height:960;width:1400}
+}
+##^##*/
