@@ -8,7 +8,7 @@ Window {
     height: 600
     title: qsTr("Hello World")
 
-    App{
-
+    App {
+        width: parent.width
     }
 }
