@@ -9,7 +9,6 @@
 
 typedef QVector<QString> VideoData;
 
-class VideoListModelPrivate;
 class VideoListModel : public QAbstractListModel {
  Q_OBJECT
   Q_PROPERTY(QString source READ source WRITE setSource)
@@ -35,7 +34,7 @@ class VideoListModel : public QAbstractListModel {
   void reset();
   void clear();
   QHash<int, QByteArray> m_roleNames;
-  QVector<VideoData *> m_videos;
+  QVector<VideoData> m_videos;
   QString m_strXmlFile;
   QString m_strError;
 };

@@ -21,13 +21,13 @@ ListView {
             anchors.margins: 8
 
             Text {
-                text: "Qt 6.2编译WebAssembly"
+                text: model.pk
                 font.pointSize: 18
                 font.weight: 600
             }
 
             Text {
-                text: "演示通过cmake将Qt6项目编译为WebAssembly，并加载自定义中文字体"
+                text: model.title
                 font.pointSize: 14
                 color: "#5e5e5e"
             }
