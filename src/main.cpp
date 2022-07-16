@@ -7,11 +7,6 @@
 #include "src/http/http.h"
 
 int main(int argc, char *argv[]) {
-#ifndef NDEBUG
-    // nondebug
-    // todo 测试目的
-    TestConnection();
-#endif
     QGuiApplication app(argc, argv);
     qmlRegisterType<VideoListModel>("an.qt.CModel", 1, 0, "VideoListModel");
 
@@ -20,11 +15,11 @@ int main(int argc, char *argv[]) {
     int fontId = QFontDatabase::addApplicationFont(":/qtwasm/assets/fonts/WenQuanYi/wqy-microhei-lite.ttc");
     QStringList fontFamilies = QFontDatabase::applicationFontFamilies(fontId);
     qDebug() << "fontfamilies:" << fontFamilies;
-    if (fontFamilies.size() > 0) {
+    if (!fontFamilies.empty()) {
         QFont font;
         auto fontFamilie = fontFamilies[0];
         font.setFamily(fontFamilie);//设置全局字体
-        app.setFont(font);
+        QGuiApplication::setFont(font);
     }
 
     QQmlApplicationEngine engine;
@@ -35,6 +30,11 @@ int main(int argc, char *argv[]) {
     if (engine.rootObjects().isEmpty())
         return -1;
 
-    return app.exec();
+#ifndef NDEBUG
+  // nondebug
+  // todo 测试目的
+  TestConnectionGet();
+#endif
+    return QGuiApplication::exec();
 }
 

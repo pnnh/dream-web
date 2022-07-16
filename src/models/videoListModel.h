@@ -7,6 +7,8 @@
 
 #include <QAbstractListModel>
 
+typedef QVector<QString> VideoData;
+
 class VideoListModelPrivate;
 class VideoListModel : public QAbstractListModel {
  Q_OBJECT
@@ -19,15 +21,23 @@ class VideoListModel : public QAbstractListModel {
   [[nodiscard]] QHash<int, QByteArray> roleNames() const override;
   [[nodiscard]] QString source() const;
   void setSource(const QString &filePath);
-  Q_INVOKABLE [[nodiscard]] QString errorString() const;
-  Q_INVOKABLE [[nodiscard]] bool hasError() const;
+//  Q_INVOKABLE [[nodiscard]] QString errorString() const;
+//  Q_INVOKABLE [[nodiscard]] bool hasError() const;
   Q_INVOKABLE void reload();
   Q_INVOKABLE void remove(int index);
   Q_INVOKABLE QVariantMap get(int index);
   Q_INVOKABLE void add(QVariantMap value);
   Q_INVOKABLE void update(int index, QVariantMap value);
+
  private:
-  VideoListModelPrivate *m_dptr;
+  //VideoListModelPrivate *m_dptr;
+  void load();
+  void reset();
+  void clear();
+  QHash<int, QByteArray> m_roleNames;
+  QVector<VideoData *> m_videos;
+  QString m_strXmlFile;
+  QString m_strError;
 };
 
 #endif //QTEMPTY_VIDEOLISTMODEL_H

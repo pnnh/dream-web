@@ -8,6 +8,7 @@
 #include <QtNetwork/QNetworkAccessManager>
 #include <QtNetwork/QNetworkReply>
 
-void TestConnection();
+void TestConnectionPost();
+void TestConnectionGet();
 
 #endif //DREAM_WEB_HTTP_H

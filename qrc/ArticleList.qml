@@ -48,7 +48,7 @@ ListView {
                 }
             }
             Rectangle {
-                height: 2
+                height: 1
                 Layout.preferredWidth: parent.width
                 color: "#e5e6eb"
             }
