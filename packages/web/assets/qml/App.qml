@@ -26,7 +26,7 @@ ColumnLayout {
                 RowLayout {
                     Layout.alignment: Qt.AlignLeft
                     Text {
-                        text: "首页7"
+                        text: "首页2"
                         font.pixelSize: 18
                         font.family: RegisteredSingleton.primaryFont.name
                     }
