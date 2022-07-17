@@ -16,10 +16,11 @@
 
 ```shell
 npm i -g http-server   # 安装工具
-http-server    # 在生成的wasm文件所在目录执行命令
+http-server --cors   # 在生成的wasm文件所在目录执行命令
 ```
 
 ## 手动进行brotli压缩
+
 验证生成的wasm文件下载时的大小
 
 ```shell

@@ -3,18 +3,19 @@
 //
 
 #include "store.h"
-#include <QtWidgets/QApplication>
 #include <QUuid>
+#include <QtWidgets/QApplication>
+#include <new>
 
 QVector<TaskInfo> queryTasks() {
-  QVector<TaskInfo> infoVect; //testInfo向量，用于存储数据库查询到的数据
+  QVector<TaskInfo> infoVect; // testInfo向量，用于存储数据库查询到的数据
 
-    int index = 0;
-    while (index++ < 10) {
-      auto video = TaskInfo();
-      video.title = "新任务";
-      infoVect.push_back(video);
-    }
+  int index = 0;
+  while (index++ < 10) {
+    auto video = TaskInfo();
+    video.title = "新任务";
+    infoVect.push_back(video);
+  }
 
   return infoVect;
 }
