@@ -26,13 +26,13 @@ ColumnLayout {
                 RowLayout {
                     Layout.alignment: Qt.AlignLeft
                     Text {
-                        text: "首页3"
-                        font.pixelSize: 16
+                        text: "首页7"
+                        font.pixelSize: 18
                         font.family: RegisteredSingleton.primaryFont.name
                     }
                     Text {
                         text: "文章4"
-                        font.pixelSize: 20
+                        font.pixelSize: 18
                         font.family: RegisteredSingleton.primaryFont.name
                     }
                 }
@@ -45,8 +45,9 @@ ColumnLayout {
                     Text {
                         anchors.centerIn: parent
                         text: "登录"
-                        font.pointSize: 12
+                        font.pixelSize: 14
                         font.weight: 400
+                        font.family: RegisteredSingleton.primaryFont.name
                         color: "#FFFFFF"
                     }
                     MouseArea {

@@ -15,13 +15,6 @@ Window {
         width: parent.width
         height: parent.height
     }
-    // 这样方便调试，修改后刷新页面即可
-    //    Loader {
-    //        id: pageLoader
-    //        source: "http://127.0.0.1:8081/qml/App.qml"
-    //        width: parent.width
-    //        height: parent.height
-    //    }
 }
 
 /*##^##

@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import an.qt.CModel 1.0
+import Qt.example.qobjectSingleton 1.0
 
 ListView {
     id: listView
@@ -41,6 +42,7 @@ ListView {
                 Text {
                     text: "2022年2月6日 7:52"
                     color: "#86909c"
+                    font.family: RegisteredSingleton.primaryFont.name
                 }
                 Text {
                     text: "105"

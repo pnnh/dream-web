@@ -26,13 +26,18 @@ int main(int argc, char *argv[]) {
   //    QGuiApplication::setFont(font);
   //  }
   QQmlApplicationEngine engine;
-#ifdef QT_DEBUG
+  QString strUrl{"qrc:/qtwasm/assets/qml/Main.qml"};
+
+#ifndef NDEBUG
+  // todo 测试目的
   TestConnectionGet();
   engine.rootContext()->setContextProperty("debug", true);
+  strUrl = "qrc:/qtwasm/assets/qml/MainDebug.qml";
 #else
   engine.rootContext()->setContextProperty("debug", false);
 #endif
-  const QUrl url(QStringLiteral("qrc:/qtwasm/assets/qml/Main.qml"));
+
+  const QUrl url(strUrl);
 
   engine.load(url);
 

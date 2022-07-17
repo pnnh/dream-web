@@ -15,6 +15,12 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+find_program(CCACHE ccache)
+if (CCACHE)
+    set(CMAKE_C_COMPILER_LAUNCHER ${CCACHE})
+    set(CMAKE_CXX_COMPILER_LAUNCHER ${CCACHE})
+endif (CCACHE)
+
 find_package(Qt6 COMPONENTS Core Gui Quick QuickControls2 Network REQUIRED)
 
 set(PROJECT_SOURCES
@@ -42,27 +48,17 @@ endif ()
 qt_import_qml_plugins(dream-web)
 qt_finalize_executable(dream-web)
 
-set_source_files_properties(assets/qml/Font.qml PROPERTIES QT_QML_SINGLETON_TYPE TRUE)
+#file(COPY assets DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
-#set_source_files_properties(assets/qml/Font.qml PROPERTIES
-#        QT_QML_SOURCE_VERSIONS "1.0"
-#        QT_QML_SOURCE_TYPENAME Font2)
-
+#set_source_files_properties(qml/Font.qml PROPERTIES QT_QML_SINGLETON_TYPE TRUE)
+#set_source_files_properties(qml/App.qml PROPERTIES
+#        QT_RESOURCE_ALIAS App.qml)
 qt_add_qml_module(dream-web
         URI qtwasm
         VERSION 1.0
         QML_FILES
         assets/qml/Main.qml
+        assets/qml/MainDebug.qml
         assets/qml/App.qml
         assets/qml/ArticleList.qml
         assets/qml/Font.qml)
-
-#set_source_files_properties(assets/qml/Font.qml PROPERTIES QT_QML_SINGLETON_TYPE TRUE)
-#
-#set_source_files_properties(assets/qml/Font.qml PROPERTIES
-#        QT_QML_SOURCE_VERSIONS "1.0"
-#        QT_QML_SOURCE_TYPENAME CustomStyles
-#        )
-#
-#qt_target_qml_sources(dream-web
-#        QML_FILES assets/qml/Font.qml)

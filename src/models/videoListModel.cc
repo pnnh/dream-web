@@ -89,11 +89,11 @@ void VideoListModel::reload() {
 
   QObject::connect(reply, &QNetworkReply::finished, [this, reply]() {
     auto bytes = reply->readAll();
-    QString respContent = bytes;
-    qDebug() << "Result: " << respContent;
+    // QString respContent = bytes;
+    // qDebug() << "Result: " << respContent;
     QJsonParseError jsonError;
     auto jsonDoc = QJsonDocument::fromJson(bytes, &jsonError);
-    qDebug() << "json转换结果：" << jsonError.errorString();
+    qDebug() << "json转换结果8：" << jsonError.errorString();
     QJsonObject jsonObject = jsonDoc.object();
     QJsonArray modelsArray = jsonObject["models"].toArray();
 
