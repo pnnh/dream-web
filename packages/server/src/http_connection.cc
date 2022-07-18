@@ -72,9 +72,7 @@ void http_connection::create_response() {
     HandleIndex(response_);
     // send_file();
   } else {
-    response_.result(boost::beast::http::status::not_found);
-    response_.set(boost::beast::http::field::content_type, "text/plain");
-    boost::beast::ostream(response_.body()) << "File not found\r\n";
+    HandleFiles(request_, response_);
   }
   write_response();
 }
