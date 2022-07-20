@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
 
   try {
     auto address_str = "0.0.0.0";
-    auto port_str = "5900";
+    auto port_str = "3500";
     char *p_end;
     auto const address = net::ip::make_address(address_str);
     auto port = static_cast<unsigned short>(std::strtol(port_str, &p_end, 10));

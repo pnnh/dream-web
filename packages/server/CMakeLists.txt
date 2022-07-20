@@ -12,4 +12,6 @@ add_executable(sfx-server-api
         src/http_connection.h
         src/http_connection.cc
         src/handlers/index.h
-        src/handlers/index.cpp)
+        src/handlers/index.cpp
+        src/utils/mime.cpp
+        src/utils/mime.h)
