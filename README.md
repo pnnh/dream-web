@@ -10,6 +10,8 @@
 # 配置了以下cmake参数
 -DCMAKE_PREFIX_PATH=~/Qt/6.2.0/macos/lib/cmake
 -DCMAKE_TOOLCHAIN_FILE:PATH=~/Qt/6.2.0/wasm_32/lib/cmake/Qt6/qt.toolchain.cmake
+# 或指定以下工具链
+-DCMAKE_TOOLCHAIN_FILE:PATH=/opt/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake
 ```
 
 ## 启动本机http-server服务
