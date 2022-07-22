@@ -14,11 +14,11 @@ void HandleFiles(
   std::string resPath = request_.target().to_string();
   std::string fullPath;
   if (resPath.rfind("/assets/qml/qmldir") == 0) {
-    fullPath = "cmake-build-webassembly/qtwasm/qmldir";
+    fullPath = "cmake-build-webassembly/packages/web/qtwasm/qmldir";
   } else if (resPath.rfind("/assets") == 0) {
     fullPath = "packages/web" + resPath;
   } else {
-    fullPath = "cmake-build-webassembly" + resPath;
+    fullPath = "cmake-build-webassembly/packages/web" + resPath;
   }
 
   std::ifstream infile;
@@ -50,15 +50,25 @@ void HandleFiles(
 
 void HandleIndex(
     boost::beast::http::response<boost::beast::http::dynamic_body> &response_) {
-  response_.set(boost::beast::http::field::content_type, "text/html");
-  boost::beast::ostream(response_.body())
-      << "<html>\n"
-      << "<head><title>Current time</title></head>\n"
-      << "<body>\n"
-      << "<h1>Current time</h1>\n"
-      << "<p>The current time is "
-      << " seconds since the epoch.</p>\n"
-      << "</body>\n"
-      << "</html>\n";
-  ;
+  std::string fullPath = "cmake-build-webassembly/packages/web/dream-wasm.html";
+  std::ifstream infile;
+  infile.open(fullPath, std::ios::in | std::ios::binary);
+  if (infile.fail()) {
+    if (errno == ENOENT) {
+      std::cerr << "Error2: " << strerror(ENOENT) << std::endl;
+      response_.result(boost::beast::http::status::not_found);
+      response_.keep_alive(false);
+      response_.set(boost::beast::http::field::server, "Beast");
+      return;
+    }
+    return;
+  }
+
+  response_.result(boost::beast::http::status::ok);
+  response_.keep_alive(false);
+  response_.set(boost::beast::http::field::server, "Beast");
+  response_.set(boost::beast::http::field::content_type,
+                mime_type(std::string(fullPath)));
+
+  boost::beast::ostream(response_.body()) << infile.rdbuf();
 }

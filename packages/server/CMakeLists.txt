@@ -7,7 +7,7 @@ if (Boost_FOUND)
     LINK_LIBRARIES(${Boost_LIBRARIES})
 endif (Boost_FOUND)
 
-add_executable(sfx-server-api
+add_executable(dream-server
         src/main.cc
         src/http_connection.h
         src/http_connection.cc
