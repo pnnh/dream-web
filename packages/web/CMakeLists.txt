@@ -42,5 +42,5 @@ qt_add_qml_module(dream-wasm
         assets/qml/App.qml
         assets/qml/ArticleList.qml
         assets/qml/Font.qml
-        assets/qml/pages/Index.qml
-        assets/qml/pages/Login.qml)
+        assets/qml/pages/IndexPage.qml
+        assets/qml/pages/LoginPage.qml)
