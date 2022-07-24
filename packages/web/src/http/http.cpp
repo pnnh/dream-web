@@ -17,7 +17,7 @@ std::string GetJsonString() {
 
 void TestConnectionPost() {
   QNetworkAccessManager *manager = new QNetworkAccessManager();
-  QUrl url = QUrl("http://code.sfx.xyz:3500/graphql/mutation");
+  QUrl url = QUrl("http://127.0.0.1:8080/graphql/mutation");
   QNetworkRequest req = QNetworkRequest(url);
 
   QByteArray chunk = QString::fromStdString(GetJsonString()).toLocal8Bit();
@@ -40,7 +40,7 @@ void TestConnectionPost() {
 
 void TestConnectionGet() {
   auto *manager = new QNetworkAccessManager();
-  QUrl url = QUrl("http://code.sfx.xyz:3500/restful/index/query");
+  QUrl url = QUrl("http://127.0.0.1:8080/restful/index/query");
   QNetworkRequest req = QNetworkRequest(url);
 
   qDebug() << "Url:" << url.url();

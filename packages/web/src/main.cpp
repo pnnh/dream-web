@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
   // todo 测试目的
   TestConnectionGet();
   engine.rootContext()->setContextProperty("debug", true);
-  strUrl = "qrc:/qtwasm/assets/qml/MainDebug.qml";
+  // strUrl = "qrc:/qtwasm/assets/qml/MainDebug.qml";
 #else
   engine.rootContext()->setContextProperty("debug", false);
 #endif

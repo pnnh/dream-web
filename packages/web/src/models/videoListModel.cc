@@ -80,7 +80,7 @@ void VideoListModel::reload() {
   reset();
 
   auto *manager = new QNetworkAccessManager();
-  QUrl url = QUrl("http://code.sfx.xyz:3500/restful/index/query");
+  QUrl url = QUrl("http://127.0.0.1:8080/restful/index/query");
   QNetworkRequest req = QNetworkRequest(url);
 
   qDebug() << "Url:" << url.url();
@@ -101,7 +101,7 @@ void VideoListModel::reload() {
       QJsonObject article = value.toObject();
       auto pk = article["pk"].toString();
       auto title = article["title"].toString();
-      qDebug() << "Key = " << pk << "|" << title << "\n";
+      // qDebug() << "Key = " << pk << "|" << title << "\n";
 
       auto video = VideoData();
       video.append(pk);

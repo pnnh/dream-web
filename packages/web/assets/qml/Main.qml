@@ -12,8 +12,7 @@ Window {
     color: "#F6F6F6"
 
     App {
-        width: parent.width
-        height: parent.height
+        anchors.fill: parent
     }
 }
 
