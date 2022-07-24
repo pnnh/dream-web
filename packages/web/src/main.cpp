@@ -8,7 +8,11 @@
 #include <QtQml/qqmlextensionplugin.h>
 #include <src/models/videoListModel.h>
 
-Q_IMPORT_QML_PLUGIN(ExtraModulePlugin)
+// Q_IMPORT_PLUGIN(QtQuick2Plugin)
+// Q_IMPORT_PLUGIN(QtQuickControls2Plugin)
+// Q_IMPORT_PLUGIN(QtQuickTemplates2Plugin)
+// Q_IMPORT_PLUGIN(QtQuick2WindowPlugin)
+// Q_IMPORT_QML_PLUGIN(ExtraModulePlugin)
 
 int main(int argc, char *argv[]) {
   QGuiApplication app(argc, argv);
@@ -33,7 +37,7 @@ int main(int argc, char *argv[]) {
 
 #ifndef NDEBUG
   // todo 测试目的
-  TestConnectionGet();
+  // TestConnectionGet();
   engine.rootContext()->setContextProperty("debug", true);
   // strUrl = "qrc:/qtwasm/assets/qml/MainDebug.qml";
 #else

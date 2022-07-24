@@ -3,6 +3,7 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import an.qt.CModel 1.0
 import Qt.example.qobjectSingleton 1.0
+import "pages"
 
 ListView {
     id: listView
@@ -11,6 +12,8 @@ ListView {
     spacing: 4
     clip: true
     orientation: ListView.Vertical
+
+    property StackView routeStack2
 
     delegate: Rectangle {
         id: wrapper
@@ -23,8 +26,17 @@ ListView {
 
             Text {
                 text: model.pk
-                font.pointSize: 18
+                font.pixelSize: 18
                 font.weight: 600
+                font.family: RegisteredSingleton.primaryFont.name
+                MouseArea {
+                    anchors.fill: parent
+                    cursorShape: Qt.PointingHandCursor
+                    onClicked: {
+                        console.debug("进入查看页", debug)
+                        routeStack2.push(readPage)
+                    }
+                }
             }
 
             Text {
@@ -64,6 +76,27 @@ ListView {
         visible: active
         background: Item {
             opacity: 0
+        }
+    }
+
+    Component {
+        id: readPage
+
+        ColumnLayout {
+            anchors.fill: parent
+            spacing: 8
+
+            Loader {
+                sourceComponent: mainNav
+                Layout.alignment: Qt.AlignTop
+                Layout.preferredWidth: parent.width
+            }
+            ReadPage {
+                Layout.preferredWidth: 960
+                Layout.maximumWidth: 960
+                Layout.alignment: Qt.AlignCenter
+                Layout.fillHeight: true
+            }
         }
     }
 }

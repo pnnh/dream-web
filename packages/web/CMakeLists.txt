@@ -34,8 +34,11 @@ if (EMSCRIPTEN)
     #target_link_options(dream-wasm PRIVATE "-s TOTAL_MEMORY=96MB")
 endif ()
 
-#qt_import_qml_plugins(dream-wasm)
-#qt_finalize_executable(dream-wasm)
+#add_subdirectory(ExtraModule)
+#target_link_libraries(dream-wasm PRIVATE extra_moduleplugin)
+
+qt_import_qml_plugins(dream-wasm)
+qt_finalize_executable(dream-wasm)
 
 set(qml_files
         assets/qml/Main.qml
@@ -43,12 +46,11 @@ set(qml_files
         assets/qml/ArticleList.qml
         assets/qml/Font.qml
         assets/qml/pages/IndexPage.qml
-        assets/qml/pages/LoginPage.qml)
+        assets/qml/pages/LoginPage.qml
+        assets/qml/pages/ReadPage.qml)
 
-add_subdirectory(ExtraModule)
-target_link_libraries(dream-wasm PRIVATE extra_moduleplugin)
 
-qt6_add_qml_module(dream-wasm
+qt_add_qml_module(dream-wasm
         URI qtwasm
         VERSION 1.0
         QML_FILES ${qml_files})

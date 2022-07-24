@@ -3,25 +3,27 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import ".."
 
+//import ExtraModule
+
 Rectangle {
     Layout.preferredWidth: parent.width
     Layout.fillHeight: true
     radius: 4
-
-    property StackView routeStack1
 
     Rectangle {
         anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
         width: 960
-        color: "#ffffff"
-        ArticleList {
-            anchors.top: parent.top
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.bottom: parent.bottom
-            routeStack2: routeStack1
+        color: "#FFFFFF"
+        Rectangle {
+            anchors.fill: parent
+            anchors.margins: 16
+            //Extra {}
+            //            CardModel {}
+            Text {
+                text: "文章查看页面"
+            }
         }
     }
 }
