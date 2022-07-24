@@ -3,6 +3,7 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import Qt.example.qobjectSingleton 1.0
 import "pages"
+import ExtraModule
 
 Item {
 
@@ -71,6 +72,8 @@ Item {
                             enabled: routeStack.depth > 1
                             onClicked: routeStack.pop()
                         }
+                        Extra {}
+                        CardModel {}
                     }
                     Rectangle {
                         height: 32

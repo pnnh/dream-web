@@ -6,14 +6,18 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
-find_package(Qt6 COMPONENTS Core Gui Quick QuickControls2 Network REQUIRED)
+find_package(Qt6 COMPONENTS Core Gui Quick QuickLayouts QuickControls2
+        QuickTemplates2 Network REQUIRED)
 
 set(PROJECT_SOURCES
         src/main.cpp
-        src/md5.cc src/md5.h
+        src/md5.h
+        src/md5.cc
         src/wasm/wasm.h
+        src/models/videoListModel.h
         src/models/videoListModel.cc
         src/services/store/store.cc
+        src/http/http.h
         src/http/http.cpp)
 
 qt_add_executable(dream-wasm
@@ -30,17 +34,22 @@ if (EMSCRIPTEN)
     #target_link_options(dream-wasm PRIVATE "-s TOTAL_MEMORY=96MB")
 endif ()
 
-qt_import_qml_plugins(dream-wasm)
-qt_finalize_executable(dream-wasm)
+#qt_import_qml_plugins(dream-wasm)
+#qt_finalize_executable(dream-wasm)
 
-qt_add_qml_module(dream-wasm
-        URI qtwasm
-        VERSION 1.0
-        QML_FILES
+set(qml_files
         assets/qml/Main.qml
-        assets/qml/MainDebug.qml
         assets/qml/App.qml
         assets/qml/ArticleList.qml
         assets/qml/Font.qml
         assets/qml/pages/IndexPage.qml
         assets/qml/pages/LoginPage.qml)
+
+add_subdirectory(ExtraModule)
+target_link_libraries(dream-wasm PRIVATE extra_moduleplugin)
+
+qt6_add_qml_module(dream-wasm
+        URI qtwasm
+        VERSION 1.0
+        QML_FILES ${qml_files})
+

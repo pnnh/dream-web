@@ -5,7 +5,10 @@
 
 #include "src/http/http.h"
 #include <QFile>
+#include <QtQml/qqmlextensionplugin.h>
 #include <src/models/videoListModel.h>
+
+Q_IMPORT_QML_PLUGIN(ExtraModulePlugin)
 
 int main(int argc, char *argv[]) {
   QGuiApplication app(argc, argv);
